@@ -10,8 +10,35 @@
   <title>Reamusic</title>
 </head>
 <body class="bg-slate-950 text-gray-300">
+  <div class="music-player w-full h-20 flex items-center justify-between px-5 bg-slate-900 border-t border-slate-300 fixed z-30 bottom-0">
+    <div class="music-card w-1/5 h-full p-2 flex items-center">
+      <div class="music-cover h-full">
+        <img class="h-full border border-slate-300 rounded-xl" src="public/images/covers/cover-1.png" alt="">
+      </div>
+      <div class="music-name ml-5">
+        <span>Music Name</span>
+        <br>
+        <span class="text-gray-400">Artist</span>
+      </div>
+    </div>
+    <div class="volume w-1/5 flex gap-2 justify-start items-center">
+      <span class="w-10 h-10 flex justify-center items-center">?</span>
+      <input class="w-30 accent-violet-600" type="range" name="volume" id="volume" min="0" max="100" value="75">
+    </div>
+    <div class="music-controls w-1/5 flex  justify-center items-center gap-2">
+      <span class="w-10 h-10 flex justify-center items-center"><</span>
+      <span class="w-10 h-10 flex justify-center items-center rounded-full bg-violet-600">II</span>
+      <span class="w-10 h-10 flex justify-center items-center">></span>
+    </div>
+    <div class="music-range w-1/5 flex gap-2 justify-center items-center">
+      <span class="current-time">1.32</span>
+      <input class="w-full accent-violet-600" type="range" name="range" id="range" min="0" max="100" value="40">
+      <span class="duration">3.48</span>
+    </div>
+    <div class="download w-1/5 flex justify-end items-center">?</div>
+  </div>
   <header class="container m-auto relative z-10">
-    <div class="flex justify-between items-center w-full h-15 px-5 border-slate-300 border-b absolute  backdrop:blur-sm bg-slate-900">
+    <div class="flex justify-between items-center w-full h-15 px-5 border-slate-300 border-b absolute  bg-slate-900">
       <div class="logo h-full p-0.5">
         <img class="h-full" src="public/images/logo/Reamusic-logo.png" alt="Reamusic-logo">
       </div>
@@ -27,11 +54,11 @@
       <p class="text-xl text-gray-400">Explore, play and enjoy your favourite music all in one place.</p>
     </div>
   </section>
-  <section class="search container m-auto my-10">
+  <section class="search container m-auto my-10 relative z-20">
     <div class="search-input w-1/2">
       <input class="w-full border border-slate-300 bg-slate-900 p-3 rounded-xl text-slate-300" type="search" name="search" id="search" placeholder="Search...">
     </div>
-    <div class="search-result w-1/2 h-80 rounded-xl mt-1 px-5 border border-r-0 border-slate-300 bg-slate-900 scrollbar-thin overflow-auto scrollbar-thumb-slate-800 scrollbar-track-slate-300 hidden">
+    <div class="search-result w-1/2 h-80 rounded-xl mt-1 px-5 border border-r-0 border-slate-300 bg-slate-900 scrollbar-thin overflow-auto scrollbar-thumb-slate-800 scrollbar-track-slate-300 absolute z-10 hidden">
       <div class="music-result h-25 flex justify-between items-center">
         <div class="music-card h-full flex items-center">
           <div class="music-cover h-full py-3">
@@ -144,7 +171,7 @@
     </div>
   </section>
   <section class="popular-slider container m-auto my-10">
-    <p class="text-2xl my-10">Recently Added</p>
+    <p class="text-2xl my-10">Popular</p>
     <div class="slider flex gap-10">
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
@@ -188,7 +215,7 @@
       </div>
     </div>
   </section>
-  <footer class="h-15 px-5 border-slate-300 border-t backdrop:blur-sm bg-slate-900 flex items-center justify-center">
+  <footer class="h-15 mb-20 px-5 border-slate-300 border-t backdrop:blur-sm bg-slate-900 flex items-center justify-center">
     <p>powered by <span class="text-violet-600">lRezamn</span></p>
   </footer>
 
