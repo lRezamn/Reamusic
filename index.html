@@ -11,8 +11,8 @@
 </head>
 <body class="bg-slate-950 text-gray-300">
   <header class="container m-auto relative z-10">
-    <div class="flex justify-between items-center w-19/20 h-20 mt-5 px-5 border-white border-2 rounded-4xl absolute backdrop:blur-sm bg-violet-700/15 left-1/40">
-      <div class="logo h-full">
+    <div class="flex justify-between items-center w-full h-15 mt-5 px-5 border-slate-300 border rounded-xl absolute  backdrop:blur-sm bg-violet-700/15 ">
+      <div class="logo h-full p-0.5">
         <img class="h-full" src="public/images/logo/Reamusic-logo.png" alt="Reamusic-logo">
       </div>
       <i>?</i>
@@ -27,6 +27,78 @@
       <p class="text-xl text-gray-400">Explore, play and enjoy your favourite music all in one place.</p>
     </div>
   </section>
+  <section class="search container m-auto my-10">
+    <div class="search-input w-1/2">
+      <input class="w-full bg-slate-900 p-3 rounded-xl" type="search" name="search" id="search" placeholder="Search...">
+    </div>
+    <div class="search-result w-1/2 h-80 rounded-xl mt-1 px-5 bg-slate-900 overflow-auto scrollbar-thumb-slate-800 scrollbar-track-slate-300 hidden">
+      <div class="music-result h-25 flex justify-between items-center">
+        <div class="music-card h-full flex items-center">
+          <div class="music-cover h-full py-3">
+            <img class="h-full rounded-xl border-2 border-slate-300" src="public/images/covers/cover-1.png" alt="">
+          </div>
+          <div class="music-name ml-5">
+            <span>Music Name</span>
+            <br>
+            <span>Artist</span>
+          </div>
+        </div>
+        <div class="play-btn">
+          <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900">Play</button>
+        </div>
+      </div>
+      <hr>
+      <div class="music-result h-25 flex justify-between items-center">
+        <div class="music-card h-full flex items-center">
+          <div class="music-cover h-full py-3">
+            <img class="h-full rounded-xl border-2 border-slate-300" src="public/images/covers/cover-2.png" alt="">
+          </div>
+          <div class="music-name ml-5">
+            <span>Music Name</span>
+            <br>
+            <span>Artist</span>
+          </div>
+        </div>
+        <div class="play-btn">
+          <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900">Play</button>
+        </div>
+      </div>
+      <hr>
+      <div class="music-result h-25 flex justify-between items-center">
+        <div class="music-card h-full flex items-center">
+          <div class="music-cover h-full py-3">
+            <img class="h-full rounded-xl border-2 border-slate-300" src="public/images/covers/cover-3.png" alt="">
+          </div>
+          <div class="music-name ml-5">
+            <span>Music Name</span>
+            <br>
+            <span>Artist</span>
+          </div>
+        </div>
+        <div class="play-btn">
+          <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900">Play</button>
+        </div>
+      </div>
+      <hr>
+      <div class="music-result h-25 flex justify-between items-center">
+        <div class="music-card h-full flex items-center">
+          <div class="music-cover h-full py-3">
+            <img class="h-full rounded-xl border-2 border-slate-300" src="public/images/covers/cover-4.png" alt="">
+          </div>
+          <div class="music-name ml-5">
+            <span>Music Name</span>
+            <br>
+            <span>Artist</span>
+          </div>
+        </div>
+        <div class="play-btn">
+          <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900">Play</button>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </section>
+
 
   <script type="module" src="/src/js/main.js"></script>
 </body>
