@@ -11,7 +11,7 @@
 </head>
 <body class="bg-slate-950 text-gray-300">
   <header class="container m-auto relative z-10">
-    <div class="flex justify-between items-center w-full h-15 mt-5 px-5 border-slate-300 border rounded-xl absolute  backdrop:blur-sm bg-violet-700/15 ">
+    <div class="flex justify-between items-center w-full h-15 px-5 border-slate-300 border-b absolute  backdrop:blur-sm bg-slate-900 ">
       <div class="logo h-full p-0.5">
         <img class="h-full" src="public/images/logo/Reamusic-logo.png" alt="Reamusic-logo">
       </div>
@@ -23,15 +23,15 @@
     <div class="absolute w-full h-full bg-linear-to-r from-black to-black/0 top-0"></div>
     <div class="hero-text absolute w-1/3 top-4/10 p-1 mx-10">
       <p class="text-xl text-gray-400">Good Music. Better Mood</p>
-      <p class="text-6xl">Discover Your <span class="text-violet-600">Soundtracks</span></p>
+      <p class="text-6xl mb-2">Discover Your <span class="text-violet-600">Soundtracks</span></p>
       <p class="text-xl text-gray-400">Explore, play and enjoy your favourite music all in one place.</p>
     </div>
   </section>
   <section class="search container m-auto my-10">
     <div class="search-input w-1/2">
-      <input class="w-full bg-slate-900 p-3 rounded-xl" type="search" name="search" id="search" placeholder="Search...">
+      <input class="w-full border border-slate-300 bg-slate-900 p-3 rounded-xl text-slate-300" type="search" name="search" id="search" placeholder="Search...">
     </div>
-    <div class="search-result w-1/2 h-80 rounded-xl mt-1 px-5 bg-slate-900 overflow-auto scrollbar-thumb-slate-800 scrollbar-track-slate-300 hidden">
+    <div class="search-result w-1/2 h-80 rounded-xl mt-1 px-5 border border-r-0 border-slate-300 bg-slate-900 scrollbar-thin overflow-auto scrollbar-thumb-slate-800 scrollbar-track-slate-300 hidden">
       <div class="music-result h-25 flex justify-between items-center">
         <div class="music-card h-full flex items-center">
           <div class="music-cover h-full py-3">
@@ -40,7 +40,7 @@
           <div class="music-name ml-5">
             <span>Music Name</span>
             <br>
-            <span>Artist</span>
+            <span class="text-gray-400">Artist</span>
           </div>
         </div>
         <div class="play-btn">
@@ -56,7 +56,7 @@
           <div class="music-name ml-5">
             <span>Music Name</span>
             <br>
-            <span>Artist</span>
+            <span class="text-gray-400">Artist</span>
           </div>
         </div>
         <div class="play-btn">
@@ -72,7 +72,7 @@
           <div class="music-name ml-5">
             <span>Music Name</span>
             <br>
-            <span>Artist</span>
+            <span class="text-gray-400">Artist</span>
           </div>
         </div>
         <div class="play-btn">
@@ -88,7 +88,7 @@
           <div class="music-name ml-5">
             <span>Music Name</span>
             <br>
-            <span>Artist</span>
+            <span class="text-gray-400">Artist</span>
           </div>
         </div>
         <div class="play-btn">
@@ -98,7 +98,96 @@
       <hr>
     </div>
   </section>
-
+  <section class="recently-added-slider container m-auto my-10">
+    <p class="text-2xl my-10">Recently Added</p>
+    <div class="slider flex gap-10">
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-1.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-2.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-3.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-4.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-5.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+    </div>
+  </section>
+  <section class="popular-slider container m-auto my-10">
+    <p class="text-2xl my-10">Recently Added</p>
+    <div class="slider flex gap-10">
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-6.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-5.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-4.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-3.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+      <div class="music-card w-75">
+        <div class="music-cover relative w-full mb-2.5">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-2.png" alt="">
+          <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
+        </div>
+        <div class="music-name">Music Name</div>
+        <div class="music-name text-gray-400">Artist</div>
+      </div>
+    </div>
+  </section>
 
   <script type="module" src="/src/js/main.js"></script>
 </body>
