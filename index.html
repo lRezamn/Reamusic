@@ -10,32 +10,34 @@
   <title>Reamusic</title>
 </head>
 <body class="bg-slate-950 text-gray-300">
-  <div class="music-player w-full h-20 flex items-center justify-between px-5 bg-slate-900 border-t border-slate-300 fixed z-30 bottom-0">
-    <div class="music-card w-1/5 h-full p-2 flex items-center">
-      <div class="music-cover h-full">
-        <img class="h-full border border-slate-300 rounded-xl" src="public/images/covers/cover-1.png" alt="">
+  <div class="music-player w-full h-20 bg-slate-900 fixed bottom-0 z-30">
+    <div class="music-progress w-full">
+      <input type="range" min="0" max="100" value="25" name="progress" id="progress" class="w-full h-1 bg-slate-300 accent-violet-600 absolute [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100">
+    </div>
+    <div class="h-full p-2 flex justify-between">
+      <div class="music-card h-full flex items-center">
+        <div class="music-cover h-full">
+          <img class="h-full border border-slate-300 rounded-xl" src="public/images/covers/cover-1.png" alt="">
+        </div>
+        <div class="music-name ml-5">
+          <span>Music Name</span>
+          <br>
+          <span class="text-gray-400">Artist</span>
+        </div>
       </div>
-      <div class="music-name ml-5">
-        <span>Music Name</span>
-        <br>
-        <span class="text-gray-400">Artist</span>
+      <div class="music-controls flex justify-center items-center gap-2">
+        <span class="w-10 h-10 flex justify-center items-center cursor-pointer"><</span>
+        <span class="w-10 h-10 flex justify-center items-center rounded-full bg-violet-600 cursor-pointer">II</span>
+        <span class="w-10 h-10 flex justify-center items-center cursor-pointer">></span>
+      </div>
+      <div class="h-full flex items-center justify-center gap-3">
+        <span class="current-time-duration text-slate-400">1:35 / 3:48</span>
+        <div class="volume flex items-center">
+          <span class="mute-unmute w-10 h-10 flex justify-center items-center">?</span>
+          <input type="range" min="0" max="100" value="25" name="volume" id="volume" class="volume h-1 bg-slate-300 accent-violet-600 [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100[&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100">
+        </div>
       </div>
     </div>
-    <div class="volume w-1/5 flex gap-2 justify-start items-center">
-      <span class="w-10 h-10 flex justify-center items-center">?</span>
-      <input class="w-30 accent-violet-600" type="range" name="volume" id="volume" min="0" max="100" value="75">
-    </div>
-    <div class="music-controls w-1/5 flex  justify-center items-center gap-2">
-      <span class="w-10 h-10 flex justify-center items-center"><</span>
-      <span class="w-10 h-10 flex justify-center items-center rounded-full bg-violet-600">II</span>
-      <span class="w-10 h-10 flex justify-center items-center">></span>
-    </div>
-    <div class="music-range w-1/5 flex gap-2 justify-center items-center">
-      <span class="current-time">1.32</span>
-      <input class="w-full accent-violet-600" type="range" name="range" id="range" min="0" max="100" value="40">
-      <span class="duration">3.48</span>
-    </div>
-    <div class="download w-1/5 flex justify-end items-center">?</div>
   </div>
   <header class="container m-auto relative z-10">
     <div class="flex justify-between items-center w-full h-15 px-5 border-slate-300 border-b absolute  bg-slate-900">
@@ -218,7 +220,6 @@
   <footer class="h-15 mb-20 px-5 border-slate-300 border-t backdrop:blur-sm bg-slate-900 flex items-center justify-center">
     <p>powered by <span class="text-violet-600">lRezamn</span></p>
   </footer>
-
   <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
