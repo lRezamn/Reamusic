@@ -12,12 +12,12 @@
 <body class="bg-slate-950 text-slate-300">
   <div class="music-player w-full h-20 bg-slate-900 fixed bottom-0 z-30">
     <div class="music-progress w-full">
-      <input type="range" min="0" max="100" value="25" name="progress" id="progress" class="w-full h-1 bg-slate-300 accent-violet-600 absolute [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100">
+      <input type="range" min="0" max="100" value="25" name="progress" id="progress" class="w-full h-1 bg-slate-300 accent-violet-600 absolute [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100 cursor-pointer">
     </div>
     <div class="h-full p-2 flex justify-between">
       <div class="music-card h-full flex items-center">
         <div class="music-cover h-full">
-          <img class="h-full border border-slate-300 rounded-xl" src="public/images/covers/cover-1.png" alt="">
+          <img class="h-full border border-slate-300 rounded-xl" src="/images/covers/cover-1.png" alt="">
         </div>
         <div class="music-name ml-5">
           <span>Music Name</span>
@@ -26,15 +26,29 @@
         </div>
       </div>
       <div class="music-controls flex justify-center items-center gap-2">
-        <span class="w-10 h-10 flex justify-center items-center cursor-pointer"><</span>
-        <span class="w-10 h-10 flex justify-center items-center rounded-full bg-violet-600 cursor-pointer">II</span>
-        <span class="w-10 h-10 flex justify-center items-center cursor-pointer">></span>
+        <span class="w-10 h-10 flex justify-center items-center cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-skip-back preview-icon"><path d="M17.971 4.285A2 2 0 0 1 21 6v12a2 2 0 0 1-3.029 1.715l-9.997-5.998a2 2 0 0 1-.003-3.432z"/><path d="M3 20V4"/></svg>
+        </span>
+        <span class="w-10 h-10 flex justify-center items-center rounded-full bg-violet-600 cursor-pointer ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play preview-icon"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+        </span>
+        <span class="w-10 h-10 flex justify-center items-center rounded-full bg-violet-600 cursor-pointer hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pause preview-icon"><rect x="14" y="3" width="5" height="18" rx="1"/><rect x="5" y="3" width="5" height="18" rx="1"/></svg>
+        </span>
+        <span class="w-10 h-10 flex justify-center items-center cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cad5e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-skip-forward preview-icon"><path d="M21 4v16"/><path d="M6.029 4.285A2 2 0 0 0 3 6v12a2 2 0 0 0 3.029 1.715l9.997-5.998a2 2 0 0 0 .003-3.432z"/></svg>
+        </span>
       </div>
       <div class="h-full flex items-center justify-center gap-3">
         <span class="current-time-duration text-slate-400">1:35 / 3:48</span>
         <div class="volume flex items-center">
-          <span class="mute-unmute w-10 h-10 flex justify-center items-center">?</span>
-          <input type="range" min="0" max="100" value="25" name="volume" id="volume" class="volume h-1 bg-slate-300 accent-violet-600 [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100[&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100">
+          <span class="mute-unmute w-10 h-10 flex justify-center items-center cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-2 preview-icon"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg>
+          </span>
+          <span class="mute-unmute w-10 h-10 flex justify-center items-center cursor-pointer hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x preview-icon"><path d="M11 4.702a.7.7 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.7.7 0 0 0 11 19.298z"/><path d="m16.5 14.5 5-5"/><path d="m16.5 9.5 5 5"/></svg>
+          </span>
+          <input type="range" min="0" max="100" value="25" name="volume" id="volume" class="volume h-1 bg-slate-300 accent-violet-600 [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100[&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:opacity-100 cursor-pointer">
         </div>
       </div>
     </div>
@@ -42,13 +56,13 @@
   <header class="container m-auto relative z-10">
     <div class="flex justify-between items-center w-full h-15 px-5 border-slate-300 border-b absolute  bg-slate-900">
       <div class="logo h-full p-0.5">
-        <img class="h-full" src="public/images/logo/Reamusic-logo.png" alt="Reamusic-logo">
+        <img class="h-full" src="/images/logo/Reamusic-logo.png" alt="Reamusic-logo">
       </div>
-      <i>?</i>
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cad5e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search preview-icon"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
     </div>
   </header>
   <section class="hero-section container m-auto relative">
-    <img class="w-full contrast-125" src="public/images/hero/hero.jpg" alt="">
+    <img class="w-full contrast-125" src="/images/hero/hero.jpg" alt="">
     <div class="absolute w-full h-full bg-linear-to-r from-black/80 via-black/20 to-black/0 top-0"></div>
     <div class="hero-text absolute w-1/3 top-4/10 p-1 mx-10 z-10">
       <p class="text-xl text-gray-400">Good Music. Better Mood</p>
@@ -64,7 +78,7 @@
       <div class="music-result h-25 flex justify-between items-center">
         <div class="music-card h-full flex items-center">
           <div class="music-cover h-full py-3">
-            <img class="h-full rounded-xl border-2 border-slate-300" src="public/images/covers/cover-1.png" alt="">
+            <img class="h-full rounded-xl border-2 border-slate-300" src="/images/covers/cover-1.png" alt="">
           </div>
           <div class="music-name ml-5">
             <span>Music Name</span>
@@ -80,7 +94,7 @@
       <div class="music-result h-25 flex justify-between items-center">
         <div class="music-card h-full flex items-center">
           <div class="music-cover h-full py-3">
-            <img class="h-full rounded-xl border-2 border-slate-300" src="public/images/covers/cover-2.png" alt="">
+            <img class="h-full rounded-xl border-2 border-slate-300" src="/images/covers/cover-2.png" alt="">
           </div>
           <div class="music-name ml-5">
             <span>Music Name</span>
@@ -96,7 +110,7 @@
       <div class="music-result h-25 flex justify-between items-center">
         <div class="music-card h-full flex items-center">
           <div class="music-cover h-full py-3">
-            <img class="h-full rounded-xl border-2 border-slate-300" src="public/images/covers/cover-3.png" alt="">
+            <img class="h-full rounded-xl border-2 border-slate-300" src="/images/covers/cover-3.png" alt="">
           </div>
           <div class="music-name ml-5">
             <span>Music Name</span>
@@ -112,7 +126,7 @@
       <div class="music-result h-25 flex justify-between items-center">
         <div class="music-card h-full flex items-center">
           <div class="music-cover h-full py-3">
-            <img class="h-full rounded-xl border-2 border-slate-300" src="public/images/covers/cover-4.png" alt="">
+            <img class="h-full rounded-xl border-2 border-slate-300" src="/images/covers/cover-4.png" alt="">
           </div>
           <div class="music-name ml-5">
             <span>Music Name</span>
@@ -128,11 +142,11 @@
     </div>
   </section>
   <section class="recently-added-slider container m-auto my-10">
-    <p class="text-2xl my-10">Recently Added</p>
+    <p class="text-2xl mt-10 mb-5">Recently Added</p>
     <div class="slider flex gap-10">
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-1.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-1.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -140,7 +154,7 @@
       </div>
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-2.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-2.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -148,7 +162,7 @@
       </div>
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-3.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-3.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -156,7 +170,7 @@
       </div>
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-4.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-4.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -164,7 +178,7 @@
       </div>
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-5.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-5.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -172,12 +186,12 @@
       </div>
     </div>
   </section>
-  <section class="popular-slider container m-auto my-10">
-    <p class="text-2xl my-10">Popular</p>
+  <section class="popular-slider container m-auto mt-10 mb-15">
+    <p class="text-2xl mt-10 mb-5">Popular</p>
     <div class="slider flex gap-10">
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-6.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-6.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -185,7 +199,7 @@
       </div>
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-5.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-5.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -193,7 +207,7 @@
       </div>
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-4.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-4.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -201,7 +215,7 @@
       </div>
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-3.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-3.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
@@ -209,7 +223,7 @@
       </div>
       <div class="music-card w-75">
         <div class="music-cover relative w-full mb-2.5">
-          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="public/images/covers/cover-2.png" alt="">
+          <img class="w-full rounded-xl border border-slate-300 contrast-125" src="/images/covers/cover-2.png" alt="">
           <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
         </div>
         <div class="music-name">Music Name</div>
