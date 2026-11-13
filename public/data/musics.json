@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "title": "Mossy Runner",
+    "genre": "Cyberpunk",
+    "audio": "/audio/track-01-mossy-runner.mp3",
+    "cover": "/images/covers/cover-01.png",
+    "plays": 1240
+  },
+  {
+    "id": 2,
+    "title": "Ember Thunder",
+    "genre": "Cinematic Orchestral",
+    "audio": "/audio/track-02-ember-thunder.mp3",
+    "cover": "/images/covers/cover-02.png",
+    "plays": 980
+  },
+  {
+    "id": 3,
+    "title": "Crimson Horizon",
+    "genre": "Lo-fi Hip-hop",
+    "audio": "/audio/track-03-crimson-horizon.mp3",
+    "cover": "/images/covers/cover-03.png",
+    "plays": 1560
+  },
+  {
+    "id": 4,
+    "title": "Sleepy Spark",
+    "genre": "Ambient",
+    "audio": "/audio/track-04-sleepy-spark.mp3",
+    "cover": "/images/covers/cover-04.png",
+    "plays": 760
+  },
+  {
+    "id": 5,
+    "title": "Frozen Anthem",
+    "genre": "Lo-fi Hip-hop",
+    "audio": "/audio/track-05-frozen-anthem.mp3",
+    "cover": "/images/covers/cover-05.png",
+    "plays": 1890
+  },
+  {
+    "id": 6,
+    "title": "Glass Bridge",
+    "genre": "Lo-fi Hip-hop",
+    "audio": "/audio/track-06-glass-bridge.mp3",
+    "cover": "/images/covers/cover-06.png",
+    "plays": 1120
+  },
+  {
+    "id": 7,
+    "title": "Ivory Summit",
+    "genre": "Ambient",
+    "audio": "/audio/track-07-ivory-summit.mp3",
+    "cover": "/images/covers/cover-07.png",
+    "plays": 870
+  },
+  {
+    "id": 8,
+    "title": "Coastal Tundra",
+    "genre": "Cinematic Orchestral",
+    "audio": "/audio/track-08-coastal-tundra.mp3",
+    "cover": "/images/covers/cover-08.png",
+    "plays": 1430
+  },
+  {
+    "id": 9,
+    "title": "Golden Canvas",
+    "genre": "Cyberpunk",
+    "audio": "/audio/track-09-golden-canvas.mp3",
+    "cover": "/images/covers/cover-09.png",
+    "plays": 2100
+  },
+  {
+    "id": 10,
+    "title": "Northern Satellite",
+    "genre": "Ambient",
+    "audio": "/audio/track-10-northern-satellite.mp3",
+    "cover": "/images/covers/cover-10.png",
+    "plays": 920
+  },
+  {
+    "id": 11,
+    "title": "Wandering Garden",
+    "genre": "Ambient",
+    "audio": "/audio/track-11-wandering-garden.mp3",
+    "cover": "/images/covers/cover-11.png",
+    "plays": 680
+  },
+  {
+    "id": 12,
+    "title": "Phantom Cascade",
+    "genre": "Cyberpunk",
+    "audio": "/audio/track-12-phantom-cascade.mp3",
+    "cover": "/images/covers/cover-12.png",
+    "plays": 1750
+  },
+  {
+    "id": 13,
+    "title": "Stormy Motion",
+    "genre": "Cinematic Orchestral",
+    "audio": "/audio/track-13-stormy-motion.mp3",
+    "cover": "/images/covers/cover-13.png",
+    "plays": 1340
+  },
+  {
+    "id": 14,
+    "title": "Rising Voyage",
+    "genre": "Cyberpunk",
+    "audio": "/audio/track-14-rising-voyage.mp3",
+    "cover": "/images/covers/cover-14.png",
+    "plays": 1980
+  },
+  {
+    "id": 15,
+    "title": "Dusty Engine",
+    "genre": "Lo-fi Hip-hop",
+    "audio": "/audio/track-15-dusty-engine.mp3",
+    "cover": "/images/covers/cover-15.png",
+    "plays": 1050
+  },
+  {
+    "id": 16,
+    "title": "Electric Horizon",
+    "genre": "Cyberpunk",
+    "audio": "/audio/track-16-electric-horizon.mp3",
+    "cover": "/images/covers/cover-16.png",
+    "plays": 2250
+  },
+  {
+    "id": 17,
+    "title": "Sleepy Comet",
+    "genre": "Ambient",
+    "audio": "/audio/track-17-sleepy-comet.mp3",
+    "cover": "/images/covers/cover-17.png",
+    "plays": 810
+  },
+  {
+    "id": 18,
+    "title": "Lucky Signal",
+    "genre": "Cyberpunk",
+    "audio": "/audio/track-18-lucky-signal.mp3",
+    "cover": "/images/covers/cover-18.png",
+    "plays": 1640
+  },
+  {
+    "id": 19,
+    "title": "Slow Summit",
+    "genre": "Lo-fi Hip-hop",
+    "audio": "/audio/track-19-slow-summit.mp3",
+    "cover": "/images/covers/cover-19.png",
+    "plays": 1180
+  },
+  {
+    "id": 20,
+    "title": "Golden Current",
+    "genre": "Cinematic Orchestral",
+    "audio": "/audio/track-20-golden-current.mp3",
+    "cover": "/images/covers/cover-20.png",
+    "plays": 1520
+  },
+  {
+    "id": 21,
+    "title": "Paper Blueprint",
+    "genre": "Cinematic Orchestral",
+    "audio": "/audio/track-21-paper-blueprint.mp3",
+    "cover": "/images/covers/cover-21.png",
+    "plays": 890
+  },
+  {
+    "id": 22,
+    "title": "Gentle Carousel",
+    "genre": "Cinematic Orchestral",
+    "audio": "/audio/track-22-gentle-carousel.mp3",
+    "cover": "/images/covers/cover-22.png",
+    "plays": 1320
+  },
+  {
+    "id": 23,
+    "title": "Stormy Harbor",
+    "genre": "Lo-fi Hip-hop",
+    "audio": "/audio/track-23-stormy-harbor.mp3",
+    "cover": "/images/covers/cover-23.png",
+    "plays": 960
+  },
+  {
+    "id": 24,
+    "title": "Heavy Current",
+    "genre": "Ambient",
+    "audio": "/audio/track-24-heavy-current.mp3",
+    "cover": "/images/covers/cover-24.png",
+    "plays": 1450
+  }
+]
