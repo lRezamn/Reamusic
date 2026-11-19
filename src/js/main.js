@@ -24,6 +24,7 @@ const getData = async () => {
 
 const musicSlider = (musics, className) => {
     const sliderContainer = document.querySelector(`${className} .swiper-wrapper`);
+    sliderContainer.innerHTML = "";
     musics.forEach((music) => {
         sliderContainer.insertAdjacentHTML("beforeend", `
             <div class="swiper-slide music-card w-60">
@@ -62,6 +63,7 @@ const musicSlider = (musics, className) => {
 
 const genresSlider = () => {
     const genresContainer = document.querySelector(".genres .genres-text .genres-container")
+    genresContainer.innerHTML = "";
     genres.forEach((genre) => {
         if (genre === currentGenre) {
             genresContainer.insertAdjacentHTML("beforeend", `
@@ -72,6 +74,10 @@ const genresSlider = () => {
             genresContainer.insertAdjacentHTML("beforeend", `
                   <div class="text-xs md:text-sm font-bold my-1 py-1 px-2 mx-2 bg-white/20 border rounded-xl cursor-pointer hover:text-violet-600 hover:hover:border-violet-600 hover:bg-violet-200 transition duration-300">${genre}</div>
         `)
+            genresContainer.lastElementChild.addEventListener("click",() => {
+                currentGenre = genre
+                genresSlider()
+            })
         }
     })
     const genresSliderMusics = musics.filter((music) => {
