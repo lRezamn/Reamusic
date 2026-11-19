@@ -29,9 +29,8 @@ const musicSlider = (musics, className) => {
             <div class="swiper-slide music-card w-60">
                 <div class="music-cover relative w-full mb-2.5">
                     <img class="w-full rounded-xl border border-slate-300 contrast-125" src="${music.cover}" alt="">
-                    <div class="w-full h-full rounded-xl bg-black/25 absolute top-0"></div>
-                    <div class="w-full h-full flex justify-center items-center rounded-xl bg-white/65 absolute top-0 hidden">
-                        <span class="w-10 h-10 flex justify-center items-center rounded-full bg-violet-600 hover:bg-violet-900 cursor-pointer border border-white">
+                    <div class="w-full h-full flex justify-center items-center rounded-xl bg-black/25 hover:bg-white/50 group absolute top-0 transition duration-400">
+                        <span class="w-15 h-15 flex justify-center items-center rounded-full bg-violet-600 hover:bg-violet-900 cursor-pointer border border-white transition duration-400 opacity-0 group-hover:opacity-100">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#cad5e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play preview-icon"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
                         </span>
                     </div>
@@ -93,3 +92,8 @@ const trendingSlider = () => {
     }).slice(0,9)
     musicSlider(trendingSliderMusics, ".trending-slider")
 };
+
+await getData()
+genresSlider()
+recentlyAddedSlider()
+trendingSlider()
