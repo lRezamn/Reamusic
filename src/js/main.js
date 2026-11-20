@@ -22,6 +22,69 @@ const getData = async () => {
     }
 };
 
+const search = () => {
+    const searchIcon = document.querySelector(".search-icon");
+    const searchSection = document.querySelector("#search");
+    const searchInput = document.querySelector("#search-input");
+    const searchResultContainer = document.querySelector(".search-result");
+    const searchResultTitle = document.querySelector(".search-result-title");
+    const searchResultWrapper = document.querySelector(".search-result-wrapper");
+    const searchResultCloseIcon = document.querySelector(".search-result-close-icon");
+    let searchResult = [];
+    searchIcon.addEventListener("click", () => {
+        searchSection.scrollIntoView();
+        searchInput.focus();
+        searchResultContainer.classList.remove("hidden");
+    });
+    searchInput.addEventListener("click", () => {searchResultContainer.classList.remove("hidden")});
+    searchResultCloseIcon.addEventListener("click", () => {
+        searchResultContainer.classList.add("hidden")
+        searchResultWrapper.innerHTML = "";
+        searchResultTitle.classList.remove("hidden");
+        searchResultTitle.innerHTML = "search for musics, genres, ...";
+        searchInput.value = "";
+    });
+    searchInput.addEventListener("keyup", () => {
+        if (searchInput.value.trim().length >= 3) {
+            searchResult = musics.filter((music) => {
+                return music.title.toLowerCase().indexOf(searchInput.value.toLowerCase().trim()) !== -1 || music.genre.toLowerCase().indexOf(searchInput.value.toLowerCase().trim()) !== -1
+            })
+            if (searchResult.length) {
+                searchResultWrapper.innerHTML = "";
+                searchResultTitle.classList.add("hidden")
+                searchResult.forEach((music) => {
+                    searchResultWrapper.insertAdjacentHTML("beforeend", `
+                <div class="music-result h-25 flex justify-between items-center">
+                    <div class="music-card h-full flex items-center">
+                        <div class="music-cover h-full py-3">
+                            <img class="h-full rounded-xl border-2 border-slate-300" src="${music.cover}" alt="">
+                        </div>
+                        <div class="music-name ml-5">
+                            <span>${music.title}</span>
+                            <br>
+                            <span class="text-gray-400">${music.genre}</span>
+                        </div>
+                    </div>
+                    <div class="play-btn">
+                        <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900 transition duration-400 cursor-pointer">Play</button>
+                    </div>
+                </div>
+                <hr>
+            `)
+                    searchResultWrapper.lastElementChild.previousElementSibling.lastElementChild.lastElementChild.addEventListener("click", () => {
+                        console.log("play")
+                    })
+                })
+            }
+            else {
+                searchResultWrapper.innerHTML = "";
+                searchResultTitle.classList.remove("hidden");
+                searchResultTitle.innerHTML = "No music matches your search";
+            }
+        }
+    })
+};
+
 const musicSlider = (musics, className) => {
     const sliderContainer = document.querySelector(`${className} .swiper-wrapper`);
     sliderContainer.innerHTML = "";
@@ -103,3 +166,4 @@ await getData()
 genresSlider()
 recentlyAddedSlider()
 trendingSlider()
+search()

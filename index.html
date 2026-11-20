@@ -71,7 +71,7 @@
       <div class="logo h-full p-0.5">
         <img class="h-full" src="/images/logo/Reamusic-logo.png" alt="Reamusic-logo">
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cad5e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search preview-icon cursor-pointer"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cad5e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search preview-icon search-icon"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
     </div>
   </header>
   <section class="hero-section container m-auto relative">
@@ -87,75 +87,14 @@
       <p class="text-md lg:text-xl text-gray-400">Explore, play and enjoy your favourite music all in one place.</p>
     </div>
   </section>
-  <section class="search container flex justify-center m-auto mt-15 mb-10 relative z-20">
+  <section id="search" class="search container flex justify-center m-auto pt-15 mb-10 relative z-20">
     <div class="search-input w-full lg:w-3xl h-12.5 mx-5 sm:mx-7.5">
-      <input class="w-full h-full border border-slate-300 bg-slate-900 p-3 rounded-xl text-slate-300" type="search" name="search" id="search" placeholder="Search...">
+      <input class="w-full h-full border border-slate-300 bg-slate-900 p-3 rounded-xl text-slate-300" type="search" name="search" id="search-input" placeholder="Search...">
     </div>
-    <div class="search-result w-[calc(100%-40px)] sm:w-[calc(100%-60px)] lg:w-3xl h-80 rounded-xl mt-1 px-5 border border-r-0 border-slate-300 bg-slate-900 scrollbar-thin overflow-auto scrollbar-thumb-slate-800 scrollbar-track-slate-300 absolute top-12.5 z-10 hidden">
-      <div class="music-result h-25 flex justify-between items-center">
-        <div class="music-card h-full flex items-center">
-          <div class="music-cover h-full py-3">
-            <img class="h-full rounded-xl border-2 border-slate-300" src="/images/covers/cover-01.png" alt="">
-          </div>
-          <div class="music-name ml-5">
-            <span>Music Name</span>
-            <br>
-            <span class="text-gray-400">Artist</span>
-          </div>
-        </div>
-        <div class="play-btn">
-          <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900">Play</button>
-        </div>
-      </div>
-      <hr>
-      <div class="music-result h-25 flex justify-between items-center">
-        <div class="music-card h-full flex items-center">
-          <div class="music-cover h-full py-3">
-            <img class="h-full rounded-xl border-2 border-slate-300" src="/images/covers/cover-02.png" alt="">
-          </div>
-          <div class="music-name ml-5">
-            <span>Music Name</span>
-            <br>
-            <span class="text-gray-400">Artist</span>
-          </div>
-        </div>
-        <div class="play-btn">
-          <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900">Play</button>
-        </div>
-      </div>
-      <hr>
-      <div class="music-result h-25 flex justify-between items-center">
-        <div class="music-card h-full flex items-center">
-          <div class="music-cover h-full py-3">
-            <img class="h-full rounded-xl border-2 border-slate-300" src="/images/covers/cover-03.png" alt="">
-          </div>
-          <div class="music-name ml-5">
-            <span>Music Name</span>
-            <br>
-            <span class="text-gray-400">Artist</span>
-          </div>
-        </div>
-        <div class="play-btn">
-          <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900">Play</button>
-        </div>
-      </div>
-      <hr>
-      <div class="music-result h-25 flex justify-between items-center">
-        <div class="music-card h-full flex items-center">
-          <div class="music-cover h-full py-3">
-            <img class="h-full rounded-xl border-2 border-slate-300" src="/images/covers/cover-04.png" alt="">
-          </div>
-          <div class="music-name ml-5">
-            <span>Music Name</span>
-            <br>
-            <span class="text-gray-400">Artist</span>
-          </div>
-        </div>
-        <div class="play-btn">
-          <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900">Play</button>
-        </div>
-      </div>
-      <hr>
+    <div class="search-result w-[calc(100%-40px)] sm:w-[calc(100%-60px)] lg:w-3xl h-80 rounded-xl mt-1 px-5 border border-slate-300 bg-slate-900 scrollbar-thin overflow-auto scrollbar-thumb-slate-800 scrollbar-track-slate-300 absolute top-27.5 z-10 hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#cad5e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x preview-icon search-result-close-icon absolute right-1 top-1 cursor-pointer"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      <p class="search-result-title text-center text-lg mt-36.5">search for musics, genres, ...</p>
+      <div class="search-result-wrapper"></div>
     </div>
   </section>
   <section class="genres container m-auto my-15 px-5 sm:px-7.5 lg:px-10">
