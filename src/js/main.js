@@ -103,6 +103,9 @@ const musicSlider = (musics, className) => {
                 <div class="music-name text-sm text-gray-400">${music.genre.toLowerCase()}</div>
             </div>
         `)
+        sliderContainer.lastElementChild.firstElementChild.lastElementChild.lastElementChild.addEventListener("click", () => {
+            console.log("play")
+        })
     })
     const swiper = new Swiper(className, {
         autoplay: false,
