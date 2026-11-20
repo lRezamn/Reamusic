@@ -24,7 +24,10 @@ const getData = async () => {
 
 const playMusic = (id) => {
     const audioTag = document.querySelector("#music-player")
-    const audioId = document.querySelector(".music-id")
+    const musicPlayer = document.querySelector(".music-player")
+    const musicControlsPlay = document.querySelector(".music-player .music-controls .play")
+    const musicControlsPause = document.querySelector(".music-player .music-controls .pause")
+    const musicId = document.querySelector(".music-player .music-id")
     const musicCardMobileCover = document.querySelector(".music-player .music-card-mobile .music-cover img")
     const musicCardMobileName = document.querySelector(".music-player .music-card-mobile .music-name")
     const musicCurrentTimeMobile = document.querySelector(".music-player .time-mobile .current")
@@ -38,13 +41,16 @@ const playMusic = (id) => {
     let music = musics.find(music => music.id === id );
 
     audioTag.src = music.audio;
-    audioId.value = music.id;
+    musicId.value = music.id;
     musicCardMobileCover.src = music.cover;
     musicCardMobileName.firstElementChild.innerHTML = music.title;
     musicCardMobileName.lastElementChild.innerHTML = music.genre;
     musicCardDesktopCover.src = music.cover;
     musicCardDesktopName.firstElementChild.innerHTML = music.title;
     musicCardDesktopName.lastElementChild.innerHTML = music.genre;
+    musicControlsPlay.classList.add("hidden")
+    musicControlsPause.classList.remove("hidden")
+    musicPlayer.classList.remove("hidden");
 
     audioTag.addEventListener("loadedmetadata", () => {
         musicCurrentTimeMobile.innerHTML = timeFormat(audioTag.currentTime);
@@ -259,9 +265,13 @@ const timeFormat = (number) => {
     return `${minute}:${seconds}`
 };
 
-await getData()
-genresSlider()
-recentlyAddedSlider()
-trendingSlider()
-search()
-musicPlayer()
+const loadPage = async () => {
+    await getData()
+    musicPlayer()
+    search()
+    genresSlider()
+    recentlyAddedSlider()
+    trendingSlider()
+};
+
+await loadPage();
