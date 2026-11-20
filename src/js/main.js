@@ -22,6 +22,97 @@ const getData = async () => {
     }
 };
 
+const playMusic = (id) => {
+    const audioTag = document.querySelector("#music-player")
+    const audioId = document.querySelector(".music-id")
+    const musicCardMobileCover = document.querySelector(".music-player .music-card-mobile .music-cover img")
+    const musicCardMobileName = document.querySelector(".music-player .music-card-mobile .music-name")
+    const musicCurrentTimeMobile = document.querySelector(".music-player .time-mobile .current")
+    const musicDurationMobile = document.querySelector(".music-player .time-mobile .duration")
+    const musicProgress = document.querySelector(".music-player .music-progress input")
+    const musicCardDesktopCover = document.querySelector(".music-player .music-card-desktop .music-cover img")
+    const musicCardDesktopName = document.querySelector(".music-player .music-card-desktop .music-name")
+    const musicCurrentTimeDesktop = document.querySelector(".music-player .time-desktop .current")
+    const musicDurationDesktop = document.querySelector(".music-player .time-desktop .duration")
+
+    let music = musics.find(music => music.id === id );
+
+    audioTag.src = music.audio;
+    audioId.value = music.id;
+    musicCardMobileCover.src = music.cover;
+    musicCardMobileName.firstElementChild.innerHTML = music.title;
+    musicCardMobileName.lastElementChild.innerHTML = music.genre;
+    musicCardDesktopCover.src = music.cover;
+    musicCardDesktopName.firstElementChild.innerHTML = music.title;
+    musicCardDesktopName.lastElementChild.innerHTML = music.genre;
+
+    audioTag.addEventListener("loadedmetadata", () => {
+        musicCurrentTimeMobile.innerHTML = timeFormat(audioTag.currentTime);
+        musicDurationMobile.innerHTML = timeFormat(audioTag.duration);
+        musicCurrentTimeDesktop.innerHTML = timeFormat(audioTag.currentTime);
+        musicDurationDesktop.innerHTML = timeFormat(audioTag.duration);
+        musicProgress.value = (audioTag.currentTime/audioTag.duration)*100;
+        audioTag.play();
+    });
+
+    audioTag.addEventListener("timeupdate", () => {
+        musicCurrentTimeMobile.innerHTML = timeFormat(audioTag.currentTime);
+        musicCurrentTimeDesktop.innerHTML = timeFormat(audioTag.currentTime);
+        musicProgress.value = (audioTag.currentTime/audioTag.duration)*100;
+    });
+
+    audioTag.addEventListener("ended", () => {
+        let id = +music.id + 1;
+        if (id === musics.length) id = 1;
+        playMusic(id);
+    }, {once: true});
+};
+
+const musicPlayer = () => {
+    const audioTag = document.querySelector("#music-player")
+    const musicProgress = document.querySelector(".music-player .music-progress input")
+    const musicControlsPrevious = document.querySelector(".music-player .music-controls .previous")
+    const musicControlsPlay = document.querySelector(".music-player .music-controls .play")
+    const musicControlsPause = document.querySelector(".music-player .music-controls .pause")
+    const musicControlsNext = document.querySelector(".music-player .music-controls .next")
+    const musicVolumeUnmute = document.querySelector(".music-player .volume .unmute")
+    const musicVolumeMute = document.querySelector(".music-player .volume .mute")
+    const musicVolumeProgress = document.querySelector(".music-player .volume .volume-progress")
+
+    musicProgress.addEventListener("change", () => {audioTag.currentTime = (musicProgress.value/100)*audioTag.duration})
+    musicControlsPrevious.addEventListener("click", () => {
+        let audioId = +document.querySelector(".music-id").value - 1
+        if (audioId === 0) audioId = musics.length
+        playMusic(audioId)
+    })
+    musicControlsNext.addEventListener("click", () => {
+        let audioId = +document.querySelector(".music-id").value + 1
+        if (audioId > musics.length) audioId = 1
+        playMusic(audioId)
+    })
+    musicControlsPlay.addEventListener("click", () => {
+        musicControlsPlay.classList.add("hidden")
+        musicControlsPause.classList.remove("hidden")
+        audioTag.play()
+    })
+    musicControlsPause.addEventListener("click", () => {
+        musicControlsPlay.classList.remove("hidden")
+        musicControlsPause.classList.add("hidden")
+        audioTag.pause()
+    })
+    musicVolumeUnmute.addEventListener("click", () => {
+        musicVolumeUnmute.classList.toggle("hidden")
+        musicVolumeMute.classList.toggle("hidden")
+        audioTag.muted = true
+    })
+    musicVolumeMute.addEventListener("click", () => {
+        musicVolumeUnmute.classList.toggle("hidden")
+        musicVolumeMute.classList.toggle("hidden")
+        audioTag.muted = false
+    })
+    musicVolumeProgress.addEventListener("input", () => {audioTag.volume = musicVolumeProgress.value/10})
+};
+
 const search = () => {
     const searchIcon = document.querySelector(".search-icon");
     const searchSection = document.querySelector("#search");
@@ -71,9 +162,7 @@ const search = () => {
                 </div>
                 <hr>
             `)
-                    searchResultWrapper.lastElementChild.previousElementSibling.lastElementChild.lastElementChild.addEventListener("click", () => {
-                        console.log("play")
-                    })
+                    searchResultWrapper.lastElementChild.previousElementSibling.lastElementChild.lastElementChild.addEventListener("click", () => {playMusic(music.id)})
                 })
             }
             else {
@@ -103,9 +192,7 @@ const musicSlider = (musics, className) => {
                 <div class="music-name text-sm text-gray-400">${music.genre.toLowerCase()}</div>
             </div>
         `)
-        sliderContainer.lastElementChild.firstElementChild.lastElementChild.lastElementChild.addEventListener("click", () => {
-            console.log("play")
-        })
+        sliderContainer.lastElementChild.firstElementChild.lastElementChild.lastElementChild.addEventListener("click", () => {playMusic(music.id)})
     })
     const swiper = new Swiper(className, {
         autoplay: false,
@@ -165,8 +252,16 @@ const trendingSlider = () => {
     musicSlider(trendingSliderMusics, ".trending-slider")
 };
 
+const timeFormat = (number) => {
+    let minute = Math.floor(number/60);
+    let seconds = Math.floor(number%60);
+    if (seconds < 10) seconds = "0" + seconds
+    return `${minute}:${seconds}`
+};
+
 await getData()
 genresSlider()
 recentlyAddedSlider()
 trendingSlider()
 search()
+musicPlayer()
