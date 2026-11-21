@@ -47,7 +47,6 @@ const playMusic = (id) => {
     musicCardDesktopName.lastElementChild.textContent = music.genre;
     musicPlayer.classList.remove("hidden");
 
-    console.log(id)
 };
 
 const musicPlayer = () => {
@@ -165,7 +164,7 @@ const search = () => {
         searchResultTitle.textContent = "search for musics, genres, ...";
         searchInput.value = "";
     });
-    searchInput.addEventListener("keyup", () => {
+    searchInput.addEventListener("input", () => {
         if (searchInput.value.trim().length >= 3) {
             searchResult = musics.filter((music) => {
                 return music.title.toLowerCase().indexOf(searchInput.value.toLowerCase().trim()) !== -1 || music.genre.toLowerCase().indexOf(searchInput.value.toLowerCase().trim()) !== -1
@@ -175,31 +174,34 @@ const search = () => {
                 searchResultTitle.classList.add("hidden")
                 searchResult.forEach((music) => {
                     searchResultWrapper.insertAdjacentHTML("beforeend", `
-                <div class="music-result h-25 flex justify-between items-center">
-                    <div class="music-card h-full flex items-center">
-                        <div class="music-cover h-full py-3">
-                            <img class="h-full rounded-xl border-2 border-slate-300" src="${music.cover}" alt="">
+                        <div class="music-result h-25 flex justify-between items-center">
+                            <div class="music-card h-full flex items-center">
+                                <div class="music-cover h-full py-3">
+                                    <img class="h-full rounded-xl border-2 border-slate-300" src="${music.cover}" alt="">
+                                </div>
+                                <div class="music-name ml-5">
+                                    <span>${music.title}</span>
+                                    <br>
+                                    <span class="text-gray-400">${music.genre}</span>
+                                </div>
+                            </div>
+                            <div class="play-btn">
+                                <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900 transition duration-400 cursor-pointer">Play</button>
+                            </div>
                         </div>
-                        <div class="music-name ml-5">
-                            <span>${music.title}</span>
-                            <br>
-                            <span class="text-gray-400">${music.genre}</span>
-                        </div>
-                    </div>
-                    <div class="play-btn">
-                        <button class="rounded-full bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-900 transition duration-400 cursor-pointer">Play</button>
-                    </div>
-                </div>
-                <hr>
-            `)
+                        <hr>
+                    `)
                     searchResultWrapper.lastElementChild.previousElementSibling.lastElementChild.lastElementChild.addEventListener("click", () => {playMusic(music.id)})
                 })
-            }
-            else {
+            } else {
                 searchResultWrapper.innerHTML = "";
                 searchResultTitle.classList.remove("hidden");
                 searchResultTitle.textContent = "No music matches your search";
             }
+        } else {
+            searchResultWrapper.innerHTML = "";
+            searchResultTitle.classList.remove("hidden");
+            searchResultTitle.textContent = "search for musics, genres, ...";
         }
     })
 };
