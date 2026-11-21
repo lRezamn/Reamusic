@@ -41,6 +41,7 @@ const playMusic = (id) => {
     const musicCardMobileName = document.querySelector(".music-player .music-card-mobile .music-name")
     const musicCardDesktopCover = document.querySelector(".music-player .music-card-desktop .music-cover img")
     const musicCardDesktopName = document.querySelector(".music-player .music-card-desktop .music-name")
+    const footer = document.querySelector("footer")
 
     const music = musics.find(music => music.id === id );
 
@@ -55,6 +56,8 @@ const playMusic = (id) => {
     musicCardDesktopName.firstElementChild.textContent = music.title;
     musicCardDesktopName.lastElementChild.textContent = music.genre;
     musicPlayer.classList.remove("hidden");
+    footer.classList.add("mb-40");
+    footer.classList.add("lg:mb-20");
 
 };
 
