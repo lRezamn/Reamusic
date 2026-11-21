@@ -5,6 +5,7 @@ let musics = [];
 let currentMusicId;
 let genres = [];
 let currentGenre = "";
+const swiperInstances = {};
 
 const getData = async () => {
     try {
@@ -205,6 +206,9 @@ const search = () => {
 
 const musicSlider = (musics, className) => {
     const sliderContainer = document.querySelector(`${className} .swiper-wrapper`);
+    if (swiperInstances[className]) {
+        swiperInstances[className].destroy(true, true);
+    }
     sliderContainer.innerHTML = "";
     musics.forEach((music) => {
         sliderContainer.insertAdjacentHTML("beforeend", `
@@ -223,7 +227,7 @@ const musicSlider = (musics, className) => {
         `)
         sliderContainer.lastElementChild.firstElementChild.lastElementChild.lastElementChild.addEventListener("click", () => {playMusic(music.id)})
     })
-    const swiper = new Swiper(className, {
+    swiperInstances[className] = new Swiper(className, {
         autoplay: false,
         slidesPerView: "auto",
         spaceBetween: 30,
