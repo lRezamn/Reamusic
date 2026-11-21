@@ -26,8 +26,6 @@ const getData = async () => {
 const playMusic = (id) => {
     const audioTag = document.querySelector("#music-player")
     const musicPlayer = document.querySelector(".music-player")
-    const musicControlsPlay = document.querySelector(".music-player .music-controls .play")
-    const musicControlsPause = document.querySelector(".music-player .music-controls .pause")
     const musicId = document.querySelector(".music-player .music-id")
     const musicCardMobileCover = document.querySelector(".music-player .music-card-mobile .music-cover img")
     const musicCardMobileName = document.querySelector(".music-player .music-card-mobile .music-name")
@@ -46,8 +44,6 @@ const playMusic = (id) => {
     musicCardDesktopCover.src = music.cover;
     musicCardDesktopName.firstElementChild.textContent = music.title;
     musicCardDesktopName.lastElementChild.textContent = music.genre;
-    musicControlsPlay.classList.add("hidden")
-    musicControlsPause.classList.remove("hidden")
     musicPlayer.classList.remove("hidden");
 
 };
@@ -67,37 +63,50 @@ const musicPlayer = () => {
     const musicCurrentTimeDesktop = document.querySelector(".music-player .time-desktop .current");
     const musicDurationDesktop = document.querySelector(".music-player .time-desktop .duration");
 
+    const startPlayback = async () => {
+        try {
+            await audioTag.play();
+        } catch (error) {
+            console.error("Failed to play audio:", error);
+            updatePlaybackUI(false);
+        }
+    };
+
+    const updatePlaybackUI = (isPlaying) => {
+        musicControlsPlay.classList.toggle("hidden", isPlaying);
+        musicControlsPause.classList.toggle("hidden", !isPlaying);
+    };
+
     musicProgress.addEventListener("change", () => {audioTag.currentTime = (musicProgress.value/100)*audioTag.duration})
+
     musicControlsPrevious.addEventListener("click", () => {
         currentMusicId -= 1;
         if (currentMusicId === 0) currentMusicId = musics.length
         playMusic(currentMusicId)
     })
+
     musicControlsNext.addEventListener("click", () => {
         currentMusicId += 1;
         if (currentMusicId > musics.length) currentMusicId = 1
         playMusic(currentMusicId)
     })
-    musicControlsPlay.addEventListener("click", () => {
-        musicControlsPlay.classList.add("hidden")
-        musicControlsPause.classList.remove("hidden")
-        audioTag.play()
-    })
-    musicControlsPause.addEventListener("click", () => {
-        musicControlsPlay.classList.remove("hidden")
-        musicControlsPause.classList.add("hidden")
-        audioTag.pause()
-    })
+
+    musicControlsPlay.addEventListener("click", startPlayback)
+
+    musicControlsPause.addEventListener("click", () => {audioTag.pause()})
+
     musicVolumeUnmute.addEventListener("click", () => {
         musicVolumeUnmute.classList.toggle("hidden")
         musicVolumeMute.classList.toggle("hidden")
         audioTag.muted = true
     })
+
     musicVolumeMute.addEventListener("click", () => {
         musicVolumeUnmute.classList.toggle("hidden")
         musicVolumeMute.classList.toggle("hidden")
         audioTag.muted = false
     })
+
     musicVolumeProgress.addEventListener("input", () => {audioTag.volume = musicVolumeProgress.value/10})
 
     audioTag.addEventListener("loadedmetadata", () => {
@@ -106,7 +115,7 @@ const musicPlayer = () => {
         musicCurrentTimeDesktop.textContent = timeFormat(audioTag.currentTime);
         musicDurationDesktop.textContent = timeFormat(audioTag.duration);
         musicProgress.value = (audioTag.currentTime/audioTag.duration)*100;
-        audioTag.play();
+        startPlayback();
     });
 
     audioTag.addEventListener("timeupdate", () => {
@@ -114,6 +123,10 @@ const musicPlayer = () => {
         musicCurrentTimeDesktop.textContent = timeFormat(audioTag.currentTime);
         musicProgress.value = (audioTag.currentTime/audioTag.duration)*100;
     });
+
+    audioTag.addEventListener("play", () => {updatePlaybackUI(true)})
+
+    audioTag.addEventListener("pause", () => {updatePlaybackUI(false)})
 
     audioTag.addEventListener("ended", () => {
         currentMusicId += 1;
