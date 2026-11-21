@@ -46,6 +46,7 @@ const playMusic = (id) => {
     musicCardDesktopName.lastElementChild.textContent = music.genre;
     musicPlayer.classList.remove("hidden");
 
+    console.log(id)
 };
 
 const musicPlayer = () => {
@@ -127,6 +128,11 @@ const musicPlayer = () => {
     audioTag.addEventListener("play", () => {updatePlaybackUI(true)})
 
     audioTag.addEventListener("pause", () => {updatePlaybackUI(false)})
+
+    audioTag.addEventListener("error", () => {
+        console.error("Failed to load audio:", audioTag.error);
+        updatePlaybackUI(false);
+    });
 
     audioTag.addEventListener("ended", () => {
         currentMusicId += 1;
