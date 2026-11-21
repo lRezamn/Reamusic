@@ -9,7 +9,15 @@
   <link rel="stylesheet" href="src/css/style.css">
   <title>Reamusic</title>
 </head>
-<body class="bg-slate-950 text-slate-300">
+<body class="bg-slate-950 text-slate-300 overflow-hidden">
+  <div class="loading fixed inset-0 z-50 bg-slate-900 flex flex-col justify-center items-center gap-1">
+    <div class="logo w-45">
+      <img class="w-full" src="/images/logo/Reamusic-logo.png" alt="Reamusic-logo">
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="#7f22fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle preview-icon animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+    <p>Loading...</p>
+    <p class="text-sm text-gray-400">Please wait a moment</p>
+  </div>
   <audio id="music-player" src=""></audio>
   <div class="music-player w-full h-40 lg:h-20 flex flex-col bg-slate-900 fixed bottom-0 z-30 border-t lg:border-none hidden">
     <input class="music-id" type="hidden" name="music-id" value="">
@@ -68,8 +76,8 @@
       </div>
     </div>
   </div>
-  <header class="container m-auto relative z-10">
-    <div class="flex justify-between items-center w-full h-10 sm:h-12.5 lg:h-15 px-2.5 lg:px-5 border-slate-300 border-b absolute  bg-slate-900">
+  <header class="container m-auto z-10">
+    <div class="flex justify-between items-center w-full h-10 sm:h-12.5 lg:h-15 px-2.5 lg:px-5 border-slate-300 border-b bg-slate-900">
       <div class="logo h-full p-0.5">
         <img class="h-full" src="/images/logo/Reamusic-logo.png" alt="Reamusic-logo">
       </div>
@@ -127,7 +135,7 @@
     </div>
   </section>
   <footer class="container m-auto h-10 sm:h-12.5 lg:h-15 mb-40 lg:mb-20 border-slate-300 border-t backdrop:blur-sm bg-slate-900 flex items-center justify-center">
-    <p>Powered by <span class="text-violet-600">lRezamn</span></p>
+    <p>Powered by <a href="https://github.com/lRezamn" target="_blank" class="text-violet-600 font-bold">lRezamn</a></p>
   </footer>
   <script type="module" src="/src/js/main.js"></script>
 </body>

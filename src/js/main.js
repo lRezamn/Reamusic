@@ -16,11 +16,20 @@ const getData = async () => {
         }
 
         musics = await response.json();
-        genres = [...new Set(musics.map(music => music.genre))].sort();
-        currentGenre = genres[0]
 
+        if (musics.length === 0) {
+            console.warn("No music data found.");
+            return false;
+        }
+
+        genres = [...new Set(musics.map(music => music.genre))].sort();
+        currentGenre = genres[0];
+
+        return true;
     } catch (error) {
         console.error("Failed to load musics data:", error);
+
+        return false;
     }
 };
 
@@ -294,13 +303,35 @@ const timeFormat = (number) => {
     return `${minute}:${seconds}`
 };
 
+const waitForImages = async () => {
+    const images = [...document.images];
+
+    await Promise.all(
+        images.map((image) => {
+            if (image.complete) return Promise.resolve();
+
+            return new Promise((resolve) => {
+                image.addEventListener("load", resolve, { once: true });
+                image.addEventListener("error", resolve, { once: true });
+            });
+        })
+    );
+};
+
 const loadPage = async () => {
-    await getData()
-    musicPlayer()
-    search()
-    genresSlider()
-    recentlyAddedSlider()
-    trendingSlider()
+    try {
+        const isDataLoaded = await getData();
+        if (!isDataLoaded) return;
+        musicPlayer()
+        search()
+        genresSlider()
+        recentlyAddedSlider()
+        trendingSlider()
+        await waitForImages();
+    } finally {
+        document.querySelector(".loading").classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+    }
 };
 
 await loadPage();
