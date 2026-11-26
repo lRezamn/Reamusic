@@ -17,8 +17,8 @@ document.addEventListener("error", (event) => {
     if (!fallback?.classList.contains("music-cover-fallback")) return;
 
     image.classList.add("hidden");
-    fallback.classList.remove("hidden");
-    imageFilter.classList.remove("bg-black/25");
+    fallback?.classList.remove("hidden");
+    imageFilter?.classList.remove("bg-black/25");
 
 }, true);
 
@@ -48,6 +48,15 @@ const getData = async () => {
     }
 };
 
+const resetCover = (image) => {
+    const fallback = image.nextElementSibling;
+    const imageFilter = fallback?.nextElementSibling;
+
+    image.classList.remove("hidden");
+    fallback?.classList.add("hidden");
+    imageFilter?.classList.add("bg-black/25");
+};
+
 const playMusic = (id) => {
     const audioTag = document.querySelector("#music-player")
     const musicPlayer = document.querySelector(".music-player")
@@ -61,6 +70,9 @@ const playMusic = (id) => {
     const music = musics.find(music => music.id === id );
 
     currentMusicId = id;
+
+    resetCover(musicCardMobileCover);
+    resetCover(musicCardDesktopCover);
 
     audioTag.src = music.audio;
     musicId.value = music.id;
