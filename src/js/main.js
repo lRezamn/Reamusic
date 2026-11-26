@@ -22,6 +22,46 @@ document.addEventListener("error", (event) => {
 
 }, true);
 
+const showToast = (message) => {
+    const toastContainer = document.querySelector(".toast-container");
+    let isMouseOver = false;
+
+    toastContainer.insertAdjacentHTML("beforeend", `
+        <div class="toast bg-slate-900 border border-slate-300 rounded-xl shadow-lg text-sm overflow-x-hidden z-80" role="status">
+            <div class="p-4 flex items-center gap-2">
+                <div class="toast-message w-88 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7f22fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-exclamation-point preview-icon toast-icon shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+                    <p class="toast-text">${message}</p>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x preview-icon toast-close cursor-pointer"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </div>
+            <div class="toast-progress h-1 rounded-xl bg-violet-600"></div>
+        </div>
+    `)
+    const toast = toastContainer.lastElementChild;
+    const toastProgress = toast.lastElementChild;
+    let toastProgressNum = 100;
+    const toastClose = toast.firstElementChild.lastElementChild;
+
+    toast.addEventListener("mouseenter", () => {isMouseOver = true})
+    toast.addEventListener("mouseleave", () => {isMouseOver = false});
+
+    const toastProgressInterval = setInterval(() => {
+        if (!isMouseOver) {
+            toastProgress.style.width = `${--toastProgressNum}%`;
+            if (!toastProgressNum) {
+                clearInterval(toastProgressInterval)
+                toast.remove();
+            }
+        }
+    }, 50)
+
+    toastClose.addEventListener("click", () => {
+        clearInterval(toastProgressInterval)
+        toast.remove();
+    })
+};
+
 const getData = async () => {
     try {
         const response = await fetch("/data/musics.json");
@@ -33,7 +73,8 @@ const getData = async () => {
         musics = await response.json();
 
         if (musics.length === 0) {
-            console.warn("No music data found.");
+            console.warn("No music data found");
+            showToast("Currently, there is no musics to show");
             return false;
         }
 
@@ -43,7 +84,7 @@ const getData = async () => {
         return true;
     } catch (error) {
         console.error("Failed to load musics data:", error);
-
+        showToast("Failed to load musics data");
         return false;
     }
 };
@@ -107,7 +148,10 @@ const musicPlayer = () => {
         try {
             await audioTag.play();
         } catch (error) {
-            console.error("Failed to play audio:", error);
+            console.error("Failed to play the audio:", error);
+            if (error.name === "NotAllowedError") {
+                showToast("Failed to play the audio");
+            }
             updatePlaybackUI(false);
         }
     };
@@ -170,6 +214,7 @@ const musicPlayer = () => {
 
     audioTag.addEventListener("error", () => {
         console.error("Failed to load audio:", audioTag.error);
+        showToast("Failed to load the audio");
         updatePlaybackUI(false);
     });
 
