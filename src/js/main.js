@@ -112,6 +112,11 @@ const musicPlayer = () => {
         }
     };
 
+    const changeTrack = (direction) => {
+        currentMusicId = ((currentMusicId - 1 + direction + musics.length) % musics.length) + 1;
+        playMusic(currentMusicId);
+    };
+
     const updatePlaybackUI = (isPlaying) => {
         musicControlsPlay.classList.toggle("hidden", isPlaying);
         musicControlsPause.classList.toggle("hidden", !isPlaying);
@@ -119,17 +124,9 @@ const musicPlayer = () => {
 
     musicProgress.addEventListener("change", () => {audioTag.currentTime = (musicProgress.value/100)*audioTag.duration})
 
-    musicControlsPrevious.addEventListener("click", () => {
-        currentMusicId -= 1;
-        if (currentMusicId === 0) currentMusicId = musics.length
-        playMusic(currentMusicId)
-    })
+    musicControlsPrevious.addEventListener("click", () => {changeTrack(-1)})
 
-    musicControlsNext.addEventListener("click", () => {
-        currentMusicId += 1;
-        if (currentMusicId > musics.length) currentMusicId = 1
-        playMusic(currentMusicId)
-    })
+    musicControlsNext.addEventListener("click", () => {changeTrack(1)})
 
     musicControlsPlay.addEventListener("click", startPlayback)
 
@@ -150,17 +147,20 @@ const musicPlayer = () => {
     musicVolumeProgress.addEventListener("input", () => {audioTag.volume = musicVolumeProgress.value/10})
 
     audioTag.addEventListener("loadedmetadata", () => {
-        musicCurrentTimeMobile.textContent = timeFormat(audioTag.currentTime);
-        musicDurationMobile.textContent = timeFormat(audioTag.duration);
-        musicCurrentTimeDesktop.textContent = timeFormat(audioTag.currentTime);
-        musicDurationDesktop.textContent = timeFormat(audioTag.duration);
+        const currentTime = timeFormat(audioTag.currentTime);
+        const duration = timeFormat(audioTag.duration);
+        musicCurrentTimeMobile.textContent = currentTime;
+        musicDurationMobile.textContent = duration;
+        musicCurrentTimeDesktop.textContent = currentTime;
+        musicDurationDesktop.textContent = duration;
         musicProgress.value = (audioTag.currentTime/audioTag.duration)*100;
         startPlayback();
     });
 
     audioTag.addEventListener("timeupdate", () => {
-        musicCurrentTimeMobile.textContent = timeFormat(audioTag.currentTime);
-        musicCurrentTimeDesktop.textContent = timeFormat(audioTag.currentTime);
+        const currentTime = timeFormat(audioTag.currentTime);
+        musicCurrentTimeMobile.textContent = currentTime;
+        musicCurrentTimeDesktop.textContent = currentTime;
         musicProgress.value = (audioTag.currentTime/audioTag.duration)*100;
     });
 
@@ -173,11 +173,7 @@ const musicPlayer = () => {
         updatePlaybackUI(false);
     });
 
-    audioTag.addEventListener("ended", () => {
-        currentMusicId += 1;
-        if (currentMusicId > musics.length) currentMusicId = 1
-        playMusic(currentMusicId)
-    });
+    audioTag.addEventListener("ended", () => {changeTrack(1)});
 
 };
 
@@ -204,9 +200,10 @@ const search = () => {
         searchInput.value = "";
     });
     searchInput.addEventListener("input", () => {
-        if (searchInput.value.trim().length >= 3) {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        if (searchTerm.length >= 3) {
             searchResult = musics.filter((music) => {
-                return music.title.toLowerCase().indexOf(searchInput.value.toLowerCase().trim()) !== -1 || music.genre.toLowerCase().indexOf(searchInput.value.toLowerCase().trim()) !== -1
+                return music.title.toLowerCase().indexOf(searchTerm) !== -1 || music.genre.toLowerCase().indexOf(searchTerm) !== -1
             })
             if (searchResult.length) {
                 searchResultWrapper.innerHTML = "";
