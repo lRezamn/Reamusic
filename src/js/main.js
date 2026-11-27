@@ -148,6 +148,7 @@ const musicPlayer = () => {
         try {
             await audioTag.play();
         } catch (error) {
+            if (error.name === "AbortError") return;
             console.error("Failed to play the audio:", error);
             if (error.name === "NotAllowedError") {
                 showToast("Failed to play the audio");
