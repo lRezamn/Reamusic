@@ -125,7 +125,7 @@ const playMusic = (id) => {
     musicCardDesktopName.lastElementChild.textContent = music.genre;
     musicPlayer.classList.remove("hidden");
     footer.classList.add("mb-40");
-    footer.classList.add("lg:mb-20");
+    footer.classList.add("lg:mb-24");
 
 };
 
